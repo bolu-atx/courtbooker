@@ -1,5 +1,6 @@
-# Getting Started with Create React App
+# Courtbooker - tennis court reservation booking system
 
+Book and manage a tennis court via a reservation system
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
