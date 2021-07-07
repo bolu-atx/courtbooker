@@ -19,6 +19,8 @@ const { Header, Content, Footer } = Layout;
 
 function App() {
   return (
+    <Router>
+
     <div className="App">
       <Layout className="layout">
         <Header>
@@ -60,6 +62,7 @@ function App() {
         </Footer>
       </Layout>
     </div>
+    </Router>
   );
 }
 
@@ -83,9 +86,7 @@ function Topics() {
           <Link to={`${match.url}/components`}>Components</Link>
         </li>
         <li>
-          <Link to={`${match.url}/props-v-state`}>
-            Props v. State
-          </Link>
+          <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
         </li>
       </ul>
 
