@@ -38,3 +38,7 @@
     transform: rotate(360deg);
   }
 }
+.site-layout-content {
+  background-color: #fff;
+  min-height:500px;
+}

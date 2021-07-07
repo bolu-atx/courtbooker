@@ -1,18 +1,39 @@
-import logo from './logo.svg';
-import { Button } from 'antd';
 import './App.css';
-
-import {NavigationBar, Demo}  from './components/layout';
-import { NavigationMenu } from './components/menu';
-import { LoadingOutlined } from '@ant-design/icons';
-
-const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'antd/dist/antd.css';
+import './index.css';
+import {DesktopOutlined} from '@ant-design/icons' 
+import { Layout, Menu, Breadcrumb } from 'antd';
+const { Header, Content, Footer } = Layout;
 
 function App() {
   return (
     <div className="App">
-        <NavigationBar name="What" />
-        <NavigationMenu dark/>
+      <Layout className="layout">
+        <Header>
+          <div className="logo" />
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
+            {new Array(5).fill(null).map((_, index) => {
+              const key = index + 1;
+              return <Menu.Item key={key} icon={<DesktopOutlined />}>{`nav ${key}`}</Menu.Item>;
+            })}
+          </Menu>
+        </Header>
+        <Content style={{ padding: "0 50px" }}>
+          <Breadcrumb style={{ margin: "16px 0" }}>
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className="site-layout-content">
+            Content
+          </div>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>
+          Ant Design ©2018 Created by Ant UED
+        </Footer>
+      </Layout>
     </div>
   );
 }
