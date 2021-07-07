@@ -1,5 +1,5 @@
-import { Menu, Button } from 'antd';
-import React, {useState} from 'react';
+import { Menu, Button } from "antd";
+import React, { useState } from "react";
 import {
   AppstoreOutlined,
   MenuUnfoldOutlined,
@@ -8,55 +8,89 @@ import {
   DesktopOutlined,
   ContainerOutlined,
   MailOutlined,
-} from '@ant-design/icons';
+  OrderedListOutlined
+} from "@ant-design/icons";
+import { OmitProps } from "antd/lib/transfer/ListBody";
 
 const { SubMenu } = Menu;
-
 export const NavigationMenu = function (props) {
   const [collapsed, setCollapsed] = useState(false);
-
   function toggleCollapsed() {
+    // calls the setCollapsed with a lambda function that operates on some current state
     setCollapsed((collapsed) => {
       return !collapsed;
     });
-  };
+  }
 
-    return (
-      <div style={{ width: 256 }}>
-        <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
-          {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-        </Button>
-        <Menu
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
-          mode="inline"
-          theme={props.dark}
-          inlineCollapsed={collapsed}
-        >
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            Option 1
+  // Default dummy dict in case a prop was not specified
+  const menu_data = props.menuData ?? [
+    { key: 1, icon: PieChartOutlined, label: "Default Opt1", children: [] },
+    { key: 2, icon: DesktopOutlined, label: "Default Opt2", children: [] },
+    { key: 3, icon: ContainerOutlined, label: "Default Opt3", children: [] },
+    {
+      key: 4,
+      icon: OrderedListOutlined,
+      label: "Submenu",
+      children: [
+        {
+          key: "s1",
+          icon: ContainerOutlined,
+          label: "Sub-Menu Level 1",
+          children: [
+            {
+              key: "ss1",
+              icon: DesktopOutlined,
+              label: "Nested SubMenu Level 2",
+              children: [],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+
+  function buildMenuJSX(menu_data) {
+    // Generate recursively a menu
+    const menu_list = [];
+    menu_data.forEach((item) => {
+      if (item.children.length == 0) {
+        menu_list.push(
+          <Menu.Item key={item.key} icon={<item.icon />}>
+            {item.label}
           </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
-            Option 2
-          </Menu.Item>
-          <Menu.Item key="3" icon={<ContainerOutlined />}>
-            Option 3
-          </Menu.Item>
-          <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-            <Menu.Item key="5">Option 5</Menu.Item>
-            <Menu.Item key="6">Option 6</Menu.Item>
-            <Menu.Item key="7">Option 7</Menu.Item>
-            <Menu.Item key="8">Option 8</Menu.Item>
+        );
+      } else {
+        menu_list.push(
+          <SubMenu key={item.key} icon={<item.icon />} title={item.label}>
+            {buildMenuJSX(item.children)};
           </SubMenu>
-          <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-            <Menu.Item key="9">Option 9</Menu.Item>
-            <Menu.Item key="10">Option 10</Menu.Item>
-            <SubMenu key="sub3" title="Submenu">
-              <Menu.Item key="11">Option 11</Menu.Item>
-              <Menu.Item key="12">Option 12</Menu.Item>
-            </SubMenu>
-          </SubMenu>
-        </Menu>
-      </div>
-    );
-}
+        )
+      }
+    });
+
+    return menu_list;
+  }
+
+  const menu_list = buildMenuJSX(menu_data);
+
+  return (
+    <div style={{ width: 256 }}>
+      <Button
+        type="primary"
+        onClick={toggleCollapsed}
+        style={{ marginBottom: 16 }}
+      >
+        {collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
+      </Button>
+      <Menu
+        defaultSelectedKeys={["1"]}
+        defaultOpenKeys={["sub1"]}
+        mode={props.menuMode}
+        theme={props.dark}
+        inlineCollapsed={collapsed}
+      >
+        {menu_list}
+      </Menu>
+    </div>
+  );
+};

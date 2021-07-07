@@ -28,10 +28,6 @@ export const NavigationBar = function NavigationBar(props) {
   return (
     <div>
       <h1>Hello, {props.name}</h1>
-      <Skeleton
-	active
-        pargraph={{ rows: 3 }}
-      ></Skeleton>
     </div>
   );
 }

@@ -5,12 +5,13 @@ import './App.css';
 import {NavigationBar, Demo}  from './components/layout';
 import { NavigationMenu } from './components/menu';
 import { LoadingOutlined } from '@ant-design/icons';
+
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 function App() {
   return (
     <div className="App">
-        <NavigationBar name="Uber" />
+        <NavigationBar name="What" />
         <NavigationMenu dark/>
     </div>
   );
