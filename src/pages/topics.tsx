@@ -1,3 +1,5 @@
+import React from 'react'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -5,9 +7,9 @@ import {
   Link,
   useRouteMatch,
   useParams,
-} from "react-router-dom";
+} from 'react-router-dom';
 
-function Topics(props) {
+function Topics(props : any) {
   let match = useRouteMatch();
 
   return (

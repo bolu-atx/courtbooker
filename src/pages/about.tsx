@@ -1,4 +1,7 @@
-function About() {
+import React from 'react'
+
+
+const About = () => {
   return <h2>About</h2>;
 }
 
