@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 
 function Topics(props : any) {
-  let match = useRouteMatch();
+  const match = useRouteMatch();
 
   return (
     <div>
@@ -41,8 +41,13 @@ function Topics(props : any) {
   );
 }
 
+
+type TopicParams = {
+  topicId : string;
+}
+
 function Topic() {
-  let { topicId } = useParams();
+  const { topicId } = useParams<TopicParams>();
   return <h3>Requested topic ID: {topicId}</h3>;
 }
 
