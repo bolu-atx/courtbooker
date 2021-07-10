@@ -10,7 +10,7 @@ import About from "./pages/about";
 import Home from "./pages/home";
 import Topics from "./pages/topics";
 
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
 import { MyFooter, MyBreadcrumb, MyMenu } from "./components/layout";
 
 const { Header, Content } = Layout;

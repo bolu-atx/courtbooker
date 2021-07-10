@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Home = () => {
+const Home = (props : any) => {
   return <h2>Home</h2>;
 }
 
