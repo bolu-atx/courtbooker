@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { Layout } from "antd";
 import "antd/dist/antd.css";
+
 import "./App.css";
 import "./index.css";
-import { navigation, site } from "./content/config";
-
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-
 import About from "./pages/about";
 import Home from "./pages/home";
 import Topics from "./pages/topics";
 
-import { Layout } from "antd";
 import { MyFooter, MyBreadcrumb, MyMenu } from "./components/layout";
+import { navigation, site } from "./configs/config";
 
 const { Header, Content } = Layout;
 
@@ -20,6 +19,9 @@ function App() {
   useEffect(() => {
     document.title = `${site.title} - ${site.tagline}`;
   }, []);
+
+
+  // setsup the router
 
   return (
     <Router>
@@ -33,6 +35,7 @@ function App() {
             <MyBreadcrumb />
             <div className="site-layout-content">
               <Switch>
+                <Suspense fallback={<div>Loading...</div>}>
                 <Route path="/about">
                   <About />
                 </Route>
@@ -42,7 +45,7 @@ function App() {
                 <Route path="/">
                   <Home />
                 </Route>
-                <Route></Route>
+                </Suspense>
               </Switch>
             </div>
           </Content>
