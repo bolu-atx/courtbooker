@@ -1,5 +1,5 @@
 // Firebase Config
-export const config = {
+export default firebaseConfig = {
 	apiKey: process.env.FIREBASE_API_KEY,
 	projectId: process.env.FIREBASE_PROJECT_ID,
 	databaseURL: process.env.FIREBASE_DB_URL,
