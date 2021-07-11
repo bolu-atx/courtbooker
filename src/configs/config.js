@@ -1,5 +1,5 @@
 const site  = {
-	title : "Courtbooker",
+	title : process.env.REACT_APP_SITE_NAME,
 	tagline: "Booking made easy!",
 	logo_url : "logo.png"
 }
