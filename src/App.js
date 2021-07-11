@@ -49,7 +49,7 @@ function App() {
               </Switch>
             </div>
           </Content>
-          <MyFooter />
+          <MyFooter env={site.env}/>
         </Layout>
       </div>
     </Router>

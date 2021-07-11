@@ -11,7 +11,8 @@ type Court = {
 type Booking = {
 	players: [Player],
 	court_id: string,
-	datetime: number
+	start_time: string,
+	end_time: string
 }
 
 export type {Player, Court, Booking};

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { DesktopOutlined } from "@ant-design/icons";
 const { Footer } = Layout;
 
-function MyFooter() {
+function MyFooter(props) {
   return (
     <Footer style={{ textAlign: "center" }}>
-      Ant Design ©2018 Created by Ant UED
+      Ant Design ©2018 Created by Ant UED - env: {props.env}
     </Footer>
   );
 }
