@@ -5,6 +5,20 @@ const site = {
 	env: process.env.NODE_ENV ? process.env.NODE_ENV : null
 }
 
+const firebaseConfig = {
+	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+	projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+	databaseURL: process.env.REACT_APP_FIREBASE_DB_URL,
+	authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+	// OPTIONAL
+	storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: process.env.REACT_APP_FIREBASE_MSG_SENDER_ID
+};
+
+
+console.log(site);
+console.log(firebaseConfig);
+
 const navigation = [
 	{
 		label: "Home",
@@ -28,4 +42,4 @@ const navigation = [
 	}
 ];
 
-export { navigation, site };
+export { navigation, firebaseConfig, site };

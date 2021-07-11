@@ -1,10 +1,11 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import firebaseConfig from '../configs/firebase.config';
+import {firebaseConfig} from '../configs/config';
 
 try {
 	firebase.initializeApp(firebaseConfig);
-} catch (err: any) {
+}
+catch (err: any) {
 	if (!/already exists/.test(err.message)) {
 		console.error('Firebase initialization error', err.stack);
 	}
