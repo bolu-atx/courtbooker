@@ -20,6 +20,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "sourceMap": true,
     "noImplicitAny": true,
     "alwaysStrict": true,
     "strictNullChecks": true
