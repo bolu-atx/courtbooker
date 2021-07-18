@@ -29,7 +29,7 @@ function MyMenu(props) {
         const len = navigation.length;
         const key = index + 1;
         return (
-          <Menu.Item key={key} icon={<DesktopOutlined />}>
+          <Menu.Item key={key} icon={navigation[index % len].icon?? <DesktopOutlined/> }>
             <Link to={navigation[index % len].link} />
             {navigation[index % len].label}
           </Menu.Item>
