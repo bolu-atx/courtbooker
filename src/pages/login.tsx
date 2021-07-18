@@ -1,11 +1,11 @@
-import{  Form, Input, Button, Checkbox  } from "antd"
+import { Form, Input, Button, Checkbox, Space } from "antd"
 
-const LoginOrSignup = (props : any) => {
-  const onFinish = (values : any) => {
+const LoginOrSignup = (props: any) => {
+  const onFinish = (values: any) => {
     console.log('Success:', values);
   };
 
-  const onFinishFailed = (errorInfo : any) => {
+  const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
 
@@ -67,9 +67,14 @@ const LoginOrSignup = (props : any) => {
           span: 16,
         }}
       >
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
+        <Space>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+          <Button type="ghost" htmlType="submit">
+            Signin with Google
+          </Button>
+        </Space>
       </Form.Item>
     </Form>
   );

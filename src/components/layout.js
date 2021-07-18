@@ -1,6 +1,7 @@
-import { Layout, Breadcrumb, Menu } from "antd";
+import { Layout, Breadcrumb, Menu, Avatar } from "antd";
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import { DesktopOutlined } from "@ant-design/icons";
+import { DesktopOutlined, UserOutlined } from "@ant-design/icons";
 const { Footer } = Layout;
 
 function MyFooter(props) {
@@ -39,4 +40,19 @@ function MyMenu(props) {
   );
 }
 
-export { MyFooter, MyBreadcrumb, MyMenu };
+function MyUser(props) {
+  useEffect(() => {
+    console.log(props.user);
+  }, []);
+
+  return (  <Avatar
+    size={{
+      xs: 24,
+      sm: 32,
+      md: 40,
+    }}
+    icon={<UserOutlined />}
+  /> );
+}
+
+export { MyFooter, MyBreadcrumb, MyMenu, MyUser};
