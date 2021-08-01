@@ -1,6 +1,7 @@
 import { Layout, Breadcrumb, Menu, Avatar } from "antd";
 import AuthContext from "../context/AuthContext";
 import { useEffect, useContext } from 'react';
+import SignInOrOutButton from './SignInButton';
 import { Link } from "react-router-dom";
 import { DesktopOutlined, UserOutlined } from "@ant-design/icons";
 const { Footer } = Layout;
@@ -9,6 +10,9 @@ function MyFooter(props) {
   return (
     <Footer style={{ textAlign: "center" }}>
       Ant Design ©2018 Created by Ant UED - env: {props.env}
+      <div>
+        <SignInOrOutButton />
+      </div>
     </Footer>
   );
 }
