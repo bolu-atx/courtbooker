@@ -1,5 +1,6 @@
 import { Layout, Breadcrumb, Menu, Avatar } from "antd";
-import { useEffect, useState } from 'react';
+import AuthContext from "../context/AuthContext";
+import { useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { DesktopOutlined, UserOutlined } from "@ant-design/icons";
 const { Footer } = Layout;
@@ -30,7 +31,7 @@ function MyMenu(props) {
         const len = navigation.length;
         const key = index + 1;
         return (
-          <Menu.Item key={key} icon={navigation[index % len].icon?? <DesktopOutlined/> }>
+          <Menu.Item key={key} icon={navigation[index % len].icon ?? <DesktopOutlined />}>
             <Link to={navigation[index % len].link} />
             {navigation[index % len].label}
           </Menu.Item>
@@ -41,18 +42,17 @@ function MyMenu(props) {
 }
 
 function MyUser(props) {
-  useEffect(() => {
-    console.log(props.user);
-  }, []);
-
-  return (  <Avatar
+  const { user } = useContext(AuthContext);
+  return (<div><Avatar
     size={{
       xs: 24,
       sm: 32,
       md: 40,
     }}
     icon={<UserOutlined />}
-  /> );
+  />
+    {user?.displayName ?? "Guest"}
+  </div>
+  );
 }
-
-export { MyFooter, MyBreadcrumb, MyMenu, MyUser};
+export { MyFooter, MyBreadcrumb, MyMenu, MyUser };

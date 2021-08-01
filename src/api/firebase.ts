@@ -3,7 +3,9 @@ import "firebase/auth"
 import { firebaseConfig } from '../configs/config';
 
 try {
-	firebase.initializeApp(firebaseConfig);
+	if (!firebase.apps.length) {
+		firebase.initializeApp(firebaseConfig);
+	}
 }
 catch (err: any) {
 	if (!/already exists/.test(err.message)) {
