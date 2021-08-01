@@ -1,12 +1,18 @@
-import { Layout, Breadcrumb, Menu } from "antd";
+import { Layout, Breadcrumb, Menu, Avatar } from "antd";
+import AuthContext from "../context/AuthContext";
+import { useEffect, useContext } from 'react';
+import SignInOrOutButton from './SignInButton';
 import { Link } from "react-router-dom";
-import { DesktopOutlined } from "@ant-design/icons";
+import { DesktopOutlined, UserOutlined } from "@ant-design/icons";
 const { Footer } = Layout;
 
-function MyFooter() {
+function MyFooter(props) {
   return (
     <Footer style={{ textAlign: "center" }}>
-      Ant Design ©2018 Created by Ant UED
+      Ant Design ©2018 Created by Ant UED - env: {props.env}
+      <div>
+        <SignInOrOutButton />
+      </div>
     </Footer>
   );
 }
@@ -29,7 +35,7 @@ function MyMenu(props) {
         const len = navigation.length;
         const key = index + 1;
         return (
-          <Menu.Item key={key} icon={<DesktopOutlined />}>
+          <Menu.Item key={key} icon={navigation[index % len].icon ?? <DesktopOutlined />}>
             <Link to={navigation[index % len].link} />
             {navigation[index % len].label}
           </Menu.Item>
@@ -39,4 +45,18 @@ function MyMenu(props) {
   );
 }
 
-export { MyFooter, MyBreadcrumb, MyMenu };
+function MyUser(props) {
+  const { user } = useContext(AuthContext);
+  return (<div><Avatar
+    size={{
+      xs: 24,
+      sm: 32,
+      md: 40,
+    }}
+    icon={<UserOutlined />}
+  />
+    {user?.displayName ?? "Guest"}
+  </div>
+  );
+}
+export { MyFooter, MyBreadcrumb, MyMenu, MyUser };

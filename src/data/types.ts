@@ -11,7 +11,8 @@ type Court = {
 type Booking = {
 	players: [Player],
 	court_id: string,
-	time: datetime
+	start_time: string,
+	end_time: string
 }
 
-export default Player;
+export type {Player, Court, Booking};
