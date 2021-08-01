@@ -30,9 +30,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     if (!isInitialized) {
       return <div>Loading...</div>;
     }
-    if (user === null) {
-      return <SignInButton />;
-    }
+
     return children;
   }, [isInitialized, user, children]);
 
