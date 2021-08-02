@@ -19,7 +19,7 @@ const { Header, Content } = Layout;
 function App() {
 
   // Get the user
-  const user = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
 
   // set the site title
   useEffect(() => {
